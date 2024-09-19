@@ -17,6 +17,10 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <!-- SweetAlert -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+        <!-- SweetAlert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -34,7 +38,7 @@
                         <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Galería 1</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'index2' %}">Galería 2</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li> -->
+                        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contacto</a></li> 
                         <!-- <li class="nav-item"><a class="nav-link" href="#team">Team</a></li> -->
                         <!-- <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> -->
                     </ul>
@@ -138,7 +142,24 @@
                 </div>
             </div>
         </footer>
-        <!-- Portfolio Modals-->
+        
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                {% if messages %}
+                    {% for message in messages %}
+                        Swal.fire({
+                            title: '{% if message.tags == "success" %}¡Mensaje completado!{% else %}Error{% endif %}',
+                            text: '{{ message }}',
+                            icon: '{% if message.tags == "success" %}success{% else %}error{% endif %}',
+                            confirmButtonText: 'OK'
+                        });
+                    {% endfor %}
+                {% endif %}
+            });
+        </script>
+
+
         
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

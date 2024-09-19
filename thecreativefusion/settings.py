@@ -138,3 +138,13 @@ cloudinary.config(
 )
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtpout.secureserver.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'alejandrogongis03@thecreativefusion.com'  # Tu correo
+EMAIL_HOST_PASSWORD = 'MessiGaucho(10)'  # Tu contraseña
+DEFAULT_FROM_EMAIL = 'alejandrogongis03@thecreativefusion.com'
